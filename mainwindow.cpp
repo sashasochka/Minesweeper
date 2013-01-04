@@ -91,6 +91,6 @@ void MainWindow::on_actionStastics_triggered()
 QSize MainWindow::prefSize()
 {
   return QSize(
-        field->cellSize().width() * field->cols + 20 + 3 * field->cols,
+        field->cellSize().width()  * field->cols + 20 + 3 * field->cols,
         field->cellSize().height() * field->rows + 63 + 3 * field->rows);
 }
