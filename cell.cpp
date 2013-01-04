@@ -127,7 +127,6 @@ void Cell::enterEvent(QEvent *)
   if(opened || status != none) return;
   setHoveredStyle();
   entered = true;
-  qDebug() << x() << ' '<< y() << '\n';
 }
 
 void Cell::leaveEvent(QEvent *)
