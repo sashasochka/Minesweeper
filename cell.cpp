@@ -63,7 +63,7 @@ void Cell::open()
 
     if(neighbours) setText(QString::number(neighbours));
 
-    updateFontSize(size());
+    //updateFontSize(size());
     QString color;
 
     switch(neighbours) {
