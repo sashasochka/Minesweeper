@@ -22,7 +22,7 @@ private:
 public:
   bool opened;
   bool shown;
-  explicit Cell(int _x, int _y, bool shown = true);
+  explicit Cell(int _x, int _y, bool shown = true, QWidget* parent = NULL);
   bool empty();
   void setBomb(bool val = true);
   bool is_empty;
@@ -35,9 +35,9 @@ public:
   void enterEvent(QEvent* ev);
   void leaveEvent(QEvent* ev);
   void resizeEvent(QResizeEvent * event) ;
-  void paintEvent(QPaintEvent *);
+  void paintEvent(QPaintEvent*);
   bool pressed() const;
-  void setSpecialStyle( QString background = "", QString color = "", QString add_qss = "");
+  void setSpecialStyle(QString background = "", QString color = "", QString add_qss = "");
 
 signals:
   void zeroBombNeighbours(QPoint);
@@ -49,6 +49,10 @@ public slots:
   void changeStatus();
   void updateFontSize(const QSize&);
   void setPressed(bool arg);
+  void setDefaultStyle(QString color = "");
+  void setHoveredStyle();
+  void setPressedStyle();
+  void setOpenedStyle(QString color);
 };
 
 #endif // MINECELL_H

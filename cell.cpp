@@ -6,7 +6,8 @@
 #include "cell.h"
 #include "field.h"
 
-Cell::Cell(int y, int x, bool shown) :
+Cell::Cell(int y, int x, bool shown, QWidget *parent) :
+  QLabel(parent),
   _y(y), _x(x),
   status(none),
   m_pressed(false),
@@ -18,8 +19,9 @@ Cell::Cell(int y, int x, bool shown) :
   setAttribute(Qt::WA_DeleteOnClose);
   setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
   setMaximumSize(1000, 1000);
-  setSpecialStyle(
-    "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);");
+  setDefaultStyle();
+  if (!shown)
+    hide();
 }
 
 bool Cell::empty()
@@ -91,8 +93,7 @@ void Cell::open()
       color = "cyan";
       break;
     }
-
-    setSpecialStyle("#ddd", color, "font-weight:bold;");
+    setOpenedStyle(color);
 
     if(!neighbours) emit zeroBombNeighbours(coords());
   } else {
@@ -124,18 +125,15 @@ void Cell::mousePressEvent(QMouseEvent *ev)
 void Cell::enterEvent(QEvent *)
 {
   if(opened || status != none) return;
-
-  setSpecialStyle(
-    "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #09f, stop: 1 #eef);");
+  setHoveredStyle();
   entered = true;
+  qDebug() << x() << ' '<< y() << '\n';
 }
 
 void Cell::leaveEvent(QEvent *)
 {
   if(opened || status != none) return;
-
-  setSpecialStyle(
-    "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);");
+  setDefaultStyle();
   entered = false;
 }
 
@@ -185,17 +183,14 @@ void Cell::changeStatus()
 
   switch(status) {
   case none:
-    setSpecialStyle(
-      "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);");
+    setDefaultStyle();
     setText("");
     break;
   case flagged:
-    setSpecialStyle(
-          "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);", "red");
+    setDefaultStyle("red");
     break;
   case asked:
-    setSpecialStyle(
-          "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);", "yellow");
+    setDefaultStyle("yellow");
     setText("?");
     break;
   }
@@ -215,16 +210,13 @@ void Cell::setPressed(bool arg)
 {
   m_pressed = arg;
 
-  if(arg)
-    setSpecialStyle("QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #aaa, stop: 1 #fff)");
-  else
-    setSpecialStyle(
-      "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);");
+  arg ? setPressedStyle() : setDefaultStyle();
 }
 
 void Cell::setSpecialStyle(QString background, QString color, QString add_qss)
 {
-  QString qss = "border:1px solid black;";
+  setIndent(0);
+  QString qss =  "border:1px solid black;";
 
   if(!color.isEmpty()) qss.append("color: " + color + ";");
 
@@ -236,7 +228,30 @@ void Cell::setSpecialStyle(QString background, QString color, QString add_qss)
 
 void Cell::updateFontSize(const QSize& new_size)
 {
-  setFont(QFont("", qMin(new_size.height(), new_size.width()) / 1.7));
+  setFont(QFont("", qMin(new_size.height(), new_size.width()) / 2));
 }
 
+void Cell::setDefaultStyle(QString color)
+{
+  setFrameStyle(Panel | Raised);
+  setSpecialStyle("#aaa", color);
+  //setSpecialStyle("QLinearGradient(x1: 0.1, y1: 0.1, x2: 0.1, y2: 0.9, stop: 0 #06f, stop: 1 #ccf);");
+}
+
+void Cell::setHoveredStyle()
+{
+  setSpecialStyle("yellow");
+  //setSpecialStyle("QLinearGradient(x1: 0.1, y1: 0.1, x2: 0.9, y2: 0.9, stop: 0 #09f, stop: 1 #eef);");
+}
+
+void Cell::setPressedStyle()
+{
+  setSpecialStyle("green");
+  //setSpecialStyle("QLinearGradient(x1: 0.1, y1: 0.1, x2: 0.9, y2: 0.9, stop: 0 #aaa, stop: 1 #fff)");
+}
+
+void Cell::setOpenedStyle(QString color)
+{
+  setSpecialStyle("#ddd", color);//, "font-weight:bold;");
+}
 
