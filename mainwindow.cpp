@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   try {
     ui->setupUi(this);
+    setWindowFlags((windowFlags() | Qt::CustomizeWindowHint) & ~Qt::WindowMaximizeButtonHint);
     move(
       (QApplication::desktop()->width() - geometry().width()) / 2,
       (QApplication::desktop()->height() - geometry().height()) / 2.7
@@ -65,6 +66,7 @@ void MainWindow::on_actionAbout_Minesweeper_triggered()
 
 void MainWindow::restart()
 {
+  tmp_layout->removeWidget(field);
   delete field;
   field = new Field(this);
   tmp_layout->addWidget(field);
