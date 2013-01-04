@@ -2,6 +2,7 @@
 #define MINECELL_H
 
 #include <QLabel>
+#include <QSize>
 
 class Cell : public QLabel
 {
@@ -46,7 +47,7 @@ signals:
 public slots:
   void open();
   void changeStatus();
-  void updateFontSize();
+  void updateFontSize(const QSize&);
   void setPressed(bool arg);
 };
 

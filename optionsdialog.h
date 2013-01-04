@@ -6,12 +6,13 @@
 #include <QLineEdit>
 #include <QRadioButton>
 #include <QComboBox>
+#include "settings.h"
 
 class OptionsDialog : public QDialog
 {
   Q_OBJECT
 private:
-  QSettings* settings;
+  Settings* settings;
 
   QLineEdit* rows_edit;
   QLineEdit* cols_edit;

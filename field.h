@@ -4,6 +4,7 @@
 #include <QGridLayout>
 #include <QtCore>
 #include <QWidget>
+
 #include "cell.h"
 #include "settings.h"
 
@@ -20,7 +21,7 @@ private:
 public:
   int rows;
   int cols;
-  bool ask_mark;
+  bool askMark;
   bool won;
 
   QString lng;

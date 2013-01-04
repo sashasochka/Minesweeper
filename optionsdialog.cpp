@@ -10,11 +10,12 @@
 #include <QPushButton>
 #include <QSettings>
 
+#include "settings.h"
 #include "uintvalidator.h"
 
 OptionsDialog::OptionsDialog(QWidget *parent) :
   QDialog(parent),
-  settings(new QSettings)
+  settings(new Settings)
 {
   setWindowTitle(tr("Options"));
   setWindowFlags(Qt::CustomizeWindowHint |

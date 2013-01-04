@@ -1,4 +1,5 @@
 #include "field.h"
+
 #include <QtCore>
 #include "windialog.h"
 #include "defeat.h"
@@ -195,7 +196,7 @@ void Field::getSettings()
   rows                = settings->value("rows", 9)                  .toInt();
   cols                = settings->value("cols", 9)                  .toInt();
   mines               = settings->value("mines", 10)                .toInt();
-  ask_mark            = settings->value("ask_mark", true)           .toBool();
+  askMark            = settings->value("askMark", true)           .toBool();
   bestBeginnerTime    = settings->value("bestTime/beginner", 0)    .toInt();
   bestIntermediateTime = settings->value("bestTime/intermediate", 0) .toInt();
   bestAdvancedTime    = settings->value("bestTime/advanced", 0)     .toInt();
@@ -210,7 +211,7 @@ void Field::saveSettings()
   settings->setValue("rows",                      rows);
   settings->setValue("cols",                      cols);
   settings->setValue("mines",                     mines);
-  settings->setValue("ask_mark",                  ask_mark);
+  settings->setValue("askMark",                   askMark);
   settings->setValue("/bestTime/beginner",        bestBeginnerTime);
   settings->setValue("/bestTime/intermediate",    bestIntermediateTime);
   settings->setValue("/bestTime/advanced",        bestAdvancedTime);
@@ -235,7 +236,8 @@ void Field::changeSettings(int rows, int cols , int mines)
 
 void Field::askMarkAllow(bool allow)
 {
-  settings->setValue("ask_mark", this->ask_mark = allow);
+  settings->setValue("askMark", this->askMark = allow);
+  askMark = allow;
 }
 
 void Field::statistics_dialog()

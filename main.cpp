@@ -14,16 +14,11 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Minesweeper");
     QCoreApplication::setApplicationVersion("2.0dev");
     QTranslator* translator = new QTranslator;
-    QString lng = QSettings()
-                  .value("language", QLocale::system().name())
-                  .toString();
+    QString lng = Settings()
+        .value("language", QLocale::system().name())
+        .toString().left(2);
     //lng="en";
-    QString translate_file_path =
-#ifdef QT_DEBUG
-      "~/minesweeper2/";
-#else
-      QDir::currentPath();
-#endif
+    QString translate_file_path = QDir::currentPath() + "/minesweeper_" + lng + ".qm";
     translator->load(translate_file_path);
     app.installTranslator(translator);
     MainWindow w;

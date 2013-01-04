@@ -63,7 +63,7 @@ void Cell::open()
 
     if(neighbours) setText(QString::number(neighbours));
 
-    updateFontSize();
+    updateFontSize(size());
     QString color;
 
     switch(neighbours) {
@@ -141,7 +141,7 @@ void Cell::leaveEvent(QEvent *)
 
 void Cell::resizeEvent(QResizeEvent *event)
 {
-  updateFontSize();
+  updateFontSize(event->size());
 }
 
 void Cell::paintEvent(QPaintEvent *ev)
@@ -179,9 +179,9 @@ void Cell::paintEvent(QPaintEvent *ev)
 
 void Cell::changeStatus()
 {
-  QSettings settings;
+  Settings settings;
   status++;
-  status %= settings.value("askMark", true).toBool() || status == asked + 1 ? 3 : 2;
+  status %= (settings.value("askMark", true).toBool() || status == asked + 1) ? 3 : 2;
 
   switch(status) {
   case none:
@@ -232,9 +232,9 @@ void Cell::setSpecialStyle(QString background, QString color, QString add_qss)
   setStyleSheet(qss);
 }
 
-void Cell::updateFontSize()
+void Cell::updateFontSize(const QSize& new_size)
 {
-  setFont(QFont("", qMin(size().height(), size().width()) / 1.7));
+  setFont(QFont("", qMin(new_size.height(), new_size.width()) / 1.7));
 }
 
 
