@@ -93,6 +93,11 @@ int Field::count_neighbour_bombs(QPoint pt)
   return neighbours;
 }
 
+QSize Field::cellSize()
+{
+  return cells[1][1]->size();
+}
+
 void Field::openNeighbours(QPoint pos)
 {
   for(int y = 0; y < 3; y++)

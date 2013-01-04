@@ -17,6 +17,7 @@ class MainWindow : public QMainWindow
 
 private:
   Field* field;
+  QSize  prefSize();
 
 public:
   explicit MainWindow(QWidget *parent = 0);

@@ -16,12 +16,15 @@ Cell::Cell(int y, int x, bool shown, QWidget *parent) :
   shown(shown),
   is_empty(true)
 {
+  if (!shown) {
+    hide();
+    return;
+  }
   setAttribute(Qt::WA_DeleteOnClose);
   setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
   setMaximumSize(1000, 1000);
   setDefaultStyle();
-  if (!shown)
-    hide();
+  setFixedSize(30,30);
 }
 
 bool Cell::empty()
@@ -179,11 +182,11 @@ void Cell::changeStatus()
   Settings settings;
   status++;
   status %= (settings.value("askMark", true).toBool() || status == asked + 1) ? 3 : 2;
+  setText("");
 
   switch(status) {
   case none:
     setDefaultStyle();
-    setText("");
     break;
   case flagged:
     setDefaultStyle("red");

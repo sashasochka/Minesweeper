@@ -36,6 +36,7 @@ public:
   explicit Field(QWidget *parent = 0);
   ~Field();
   int count_neighbour_bombs(QPoint pt);
+  QSize cellSize();
 signals:
   void needRestart();
   void needResize(int w, int h);
