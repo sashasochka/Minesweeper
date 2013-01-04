@@ -5,11 +5,13 @@
 #include <QDate>
 #include "statisticswidget.h"
 
-namespace Ui {
+namespace Ui
+{
 class defeat;
 }
 
-class Defeat : public StatisticsWidget {
+class Defeat : public StatisticsWidget
+{
   Q_OBJECT
 
 public:

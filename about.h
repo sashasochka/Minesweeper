@@ -3,11 +3,13 @@
 
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class About;
 }
 
-class About : public QWidget {
+class About : public QWidget
+{
   Q_OBJECT
 
 public:

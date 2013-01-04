@@ -10,7 +10,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
-  ui(new Ui::MainWindow) {
+  ui(new Ui::MainWindow)
+{
   try {
     ui->setupUi(this);
     move(
@@ -35,40 +36,48 @@ MainWindow::MainWindow(QWidget *parent) :
   }
 }
 
-MainWindow::~MainWindow() {
+MainWindow::~MainWindow()
+{
   delete ui;
 }
 
 
-void MainWindow::on_actionExit_triggered() {
+void MainWindow::on_actionExit_triggered()
+{
   exit(EXIT_SUCCESS);
 }
 
-void MainWindow::on_actionNew_Game_triggered() {
+void MainWindow::on_actionNew_Game_triggered()
+{
   restart();
 }
 
-void MainWindow::on_actionOptions_triggered() {
+void MainWindow::on_actionOptions_triggered()
+{
   field->optionsDialog();
 }
 
-void MainWindow::on_actionAbout_Minesweeper_triggered() {
+void MainWindow::on_actionAbout_Minesweeper_triggered()
+{
   About* about = new About;
   about->show();
 }
 
-void MainWindow::restart() {
+void MainWindow::restart()
+{
   delete field;
   field = new Field(this);
   tmp_layout->addWidget(field);
   connect(field, SIGNAL(needRestart()), SLOT(restart()));
 }
 
-void MainWindow::on_actionView_Help_triggered() {
+void MainWindow::on_actionView_Help_triggered()
+{
   ChangelogInfo* changelog = new ChangelogInfo();
   changelog->show();
 }
 
-void MainWindow::on_actionStastics_triggered() {
+void MainWindow::on_actionStastics_triggered()
+{
   field->statistics_dialog();
 }

@@ -3,11 +3,13 @@
 
 About::About(QWidget *parent) :
   QWidget(parent),
-  ui(new Ui::About) {
+  ui(new Ui::About)
+{
   setAttribute(Qt::WA_DeleteOnClose);
   ui->setupUi(this);
 }
 
-About::~About() {
+About::~About()
+{
   delete ui;
 }

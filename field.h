@@ -7,7 +7,8 @@
 #include "cell.h"
 #include "settings.h"
 
-class Field : public QWidget {
+class Field : public QWidget
+{
   Q_OBJECT
 private:
   QGridLayout* f_layout;

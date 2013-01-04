@@ -14,7 +14,8 @@
 
 OptionsDialog::OptionsDialog(QWidget *parent) :
   QDialog(parent),
-  settings(new QSettings) {
+  settings(new QSettings)
+{
   setWindowTitle(tr("Options"));
   setWindowFlags(Qt::CustomizeWindowHint |
                  Qt::WindowCloseButtonHint);
@@ -114,19 +115,22 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
 
 
 
-void OptionsDialog::setDisabledCustoms() {
+void OptionsDialog::setDisabledCustoms()
+{
   rows_edit->setEnabled(false);
   cols_edit->setEnabled(false);
   mines_edit->setEnabled(false);
 }
 
-void OptionsDialog::setEnabledCustoms() {
+void OptionsDialog::setEnabledCustoms()
+{
   rows_edit->setEnabled(true);
   cols_edit->setEnabled(true);
   mines_edit->setEnabled(true);
 }
 
-void OptionsDialog::ok() {
+void OptionsDialog::ok()
+{
   int new_rows, new_cols, new_mines;
   bool data_correct = true;
   QMessageBox*mb;

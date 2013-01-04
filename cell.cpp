@@ -13,7 +13,8 @@ Cell::Cell(int y, int x, bool shown) :
   entered(false),
   opened(false),
   shown(shown),
-  is_empty(true) {
+  is_empty(true)
+{
   setAttribute(Qt::WA_DeleteOnClose);
   setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
   setMaximumSize(1000, 1000);
@@ -21,27 +22,33 @@ Cell::Cell(int y, int x, bool shown) :
     "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);");
 }
 
-bool Cell::empty() {
+bool Cell::empty()
+{
   return is_empty;
 }
 
-void Cell::setBomb(bool val) {
+void Cell::setBomb(bool val)
+{
   is_empty = !val;
 }
 
-int Cell::x() {
+int Cell::x()
+{
   return _x;
 }
 
-int Cell::y() {
+int Cell::y()
+{
   return _y;
 }
 
-QPoint Cell::coords() {
+QPoint Cell::coords()
+{
   return QPoint(_x, _y);
 }
 
-void Cell::open() {
+void Cell::open()
+{
   if(!shown || opened) return;
 
   emit beforeOpened(x(), y());
@@ -95,7 +102,8 @@ void Cell::open() {
   emit cellOpened();
 }
 
-void Cell::mouseReleaseEvent(QMouseEvent *event) {
+void Cell::mouseReleaseEvent(QMouseEvent *event)
+{
   if(opened || QApplication::widgetAt (QCursor::pos()) != this) return;
 
   if (event->button() == Qt::LeftButton) {
@@ -106,13 +114,15 @@ void Cell::mouseReleaseEvent(QMouseEvent *event) {
   }
 }
 
-void Cell::mousePressEvent(QMouseEvent *ev) {
+void Cell::mousePressEvent(QMouseEvent *ev)
+{
   if(opened || status != none || ev->button() != Qt::LeftButton) return;
 
   setPressed(true);
 }
 
-void Cell::enterEvent(QEvent *) {
+void Cell::enterEvent(QEvent *)
+{
   if(opened || status != none) return;
 
   setSpecialStyle(
@@ -120,7 +130,8 @@ void Cell::enterEvent(QEvent *) {
   entered = true;
 }
 
-void Cell::leaveEvent(QEvent *) {
+void Cell::leaveEvent(QEvent *)
+{
   if(opened || status != none) return;
 
   setSpecialStyle(
@@ -128,11 +139,13 @@ void Cell::leaveEvent(QEvent *) {
   entered = false;
 }
 
-void Cell::resizeEvent(QResizeEvent *event) {
+void Cell::resizeEvent(QResizeEvent *event)
+{
   updateFontSize();
 }
 
-void Cell::paintEvent(QPaintEvent *ev) {
+void Cell::paintEvent(QPaintEvent *ev)
+{
   QLabel::paintEvent(ev);
 
   if(status == flagged) {
@@ -164,7 +177,8 @@ void Cell::paintEvent(QPaintEvent *ev) {
   }
 }
 
-void Cell::changeStatus() {
+void Cell::changeStatus()
+{
   QSettings settings;
   status++;
   status %= settings.value("askMark", true).toBool() || status == asked + 1 ? 3 : 2;
@@ -185,15 +199,18 @@ void Cell::changeStatus() {
   }
 }
 
-int Cell::getStatus() {
+int Cell::getStatus()
+{
   return status;
 }
 
-bool Cell::pressed() const {
+bool Cell::pressed() const
+{
   return m_pressed;
 }
 
-void Cell::setPressed(bool arg) {
+void Cell::setPressed(bool arg)
+{
   m_pressed = arg;
 
   if(arg)
@@ -203,7 +220,8 @@ void Cell::setPressed(bool arg) {
       "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);");
 }
 
-void Cell::setSpecialStyle(QString background, QString color, QString add_qss) {
+void Cell::setSpecialStyle(QString background, QString color, QString add_qss)
+{
   QString qss = "border:1px solid black;";
 
   if(!color.isEmpty()) qss.append("color: " + color + ";");
@@ -214,7 +232,8 @@ void Cell::setSpecialStyle(QString background, QString color, QString add_qss) {
   setStyleSheet(qss);
 }
 
-void Cell::updateFontSize() {
+void Cell::updateFontSize()
+{
   setFont(QFont("", qMin(size().height(), size().width()) / 1.7));
 }
 

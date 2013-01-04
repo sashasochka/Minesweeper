@@ -3,7 +3,8 @@
 
 #define CHANGE_LANGUAGE 2
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
   int ret_code;
 
   do {

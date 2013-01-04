@@ -4,11 +4,13 @@
 #include "statisticswidget.h"
 
 
-namespace Ui {
+namespace Ui
+{
 class WinDialog;
 }
 
-class WinDialog : public StatisticsWidget {
+class WinDialog : public StatisticsWidget
+{
   Q_OBJECT
 
 public:

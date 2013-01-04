@@ -1,33 +1,17 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include <QtCore>
-#include <QVariant>
 #include <QWidget>
-#include <QMap>
+#include <QSettings>
 
-class Settings : QObject {
+class Settings : public QSettings
+{
   Q_OBJECT
 private:
-  QMap<QString, QVariant> m;
-
 public:
-  explicit Settings(QWidget *parent = 0): QObject(parent){}
-
-  QVariant value(QString key, QVariant def) {
-    return def;
-  }
-
-  void setValue(QString key, QVariant value) {
-    //m.insert(key, value);
-  }
-
-  void remove(QString key) {
-    //m.remove(key);
-  }
+  explicit Settings(QWidget *parent = 0);
 
 signals:
-
 public slots:
 
 };

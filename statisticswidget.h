@@ -6,7 +6,8 @@
 #include <QTime>
 #include <QDate>
 
-class StatisticsWidget : public QDialog {
+class StatisticsWidget : public QDialog
+{
   Q_OBJECT
 public:
   explicit StatisticsWidget(QWidget *parent = 0);

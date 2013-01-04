@@ -3,11 +3,13 @@
 
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class ChangelogInfo;
 }
 
-class ChangelogInfo : public QWidget {
+class ChangelogInfo : public QWidget
+{
   Q_OBJECT
 
 public:

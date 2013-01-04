@@ -3,7 +3,8 @@
 
 #include <QValidator>
 
-class UIntValidator : public QValidator {
+class UIntValidator : public QValidator
+{
   Q_OBJECT
 public:
   explicit UIntValidator(QObject *parent = 0);

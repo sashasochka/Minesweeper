@@ -3,7 +3,8 @@
 
 #include <QLabel>
 
-class Cell : public QLabel {
+class Cell : public QLabel
+{
   Q_OBJECT
   Q_PROPERTY(bool empty_prop READ empty)
   Q_PROPERTY(int  status     READ getStatus)

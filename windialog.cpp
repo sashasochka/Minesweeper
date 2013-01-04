@@ -3,23 +3,27 @@
 
 WinDialog::WinDialog(QWidget *parent) :
   StatisticsWidget(parent),
-  ui(new Ui::WinDialog) {
+  ui(new Ui::WinDialog)
+{
   ui->setupUi(this);
   setWindowFlags(Qt::CustomizeWindowHint |
                  Qt::WindowCloseButtonHint);
 }
 
-WinDialog::~WinDialog() {
+WinDialog::~WinDialog()
+{
   delete ui;
 }
 
-void WinDialog::on_pushButton_clicked() {
+void WinDialog::on_pushButton_clicked()
+{
   exit(0);
 }
 
 
 
-void WinDialog::enableBestTimeCongratulations(bool enable) {
+void WinDialog::enableBestTimeCongratulations(bool enable)
+{
   if(!enable) return;
 
   QLabel* label = findChild<QLabel*>("congratulations");

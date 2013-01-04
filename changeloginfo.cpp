@@ -3,13 +3,15 @@
 
 ChangelogInfo::ChangelogInfo(QWidget *parent) :
   QWidget(parent),
-  ui(new Ui::ChangelogInfo) {
+  ui(new Ui::ChangelogInfo)
+{
   ui->setupUi(this);
   adjustSize();
   setMaximumSize(size());
   setMinimumSize(size());
 }
 
-ChangelogInfo::~ChangelogInfo() {
+ChangelogInfo::~ChangelogInfo()
+{
   delete ui;
 }

@@ -10,10 +10,11 @@
 Field::Field(QWidget *parent) :
   QWidget(parent),
   f_layout(NULL),
-  settings(),
+  settings(new Settings),
   cells_are_filled(false),
   won(false),
-  date(QDate::currentDate()) {
+  date(QDate::currentDate())
+{
   setAttribute(Qt::WA_DeleteOnClose);
   getSettings();
   const int a = 32;
@@ -54,7 +55,8 @@ Field::Field(QWidget *parent) :
 }
 
 
-void Field::fillCells(int exclude_x, int exclude_y) {
+void Field::fillCells(int exclude_x, int exclude_y)
+{
   if(cells_are_filled) return;
 
   time.start();
@@ -77,7 +79,8 @@ void Field::fillCells(int exclude_x, int exclude_y) {
   cells_are_filled = true;
 }
 
-int Field::count_neighbour_bombs(QPoint pt) {
+int Field::count_neighbour_bombs(QPoint pt)
+{
   int neighbours = 0;
 
   for (int i = -1; i <= 1; ++i)
@@ -89,13 +92,15 @@ int Field::count_neighbour_bombs(QPoint pt) {
   return neighbours;
 }
 
-void Field::openNeighbours(QPoint pos) {
+void Field::openNeighbours(QPoint pos)
+{
   for(int y = 0; y < 3; y++)
     for (int x = 0; x < 3; ++x)
       cells[y + pos.ry() - 1][x + pos.rx() - 1]->open();
 }
 
-void Field::testIfWin() {
+void Field::testIfWin()
+{
   if(won) return;
 
   won = true;
@@ -108,7 +113,8 @@ void Field::testIfWin() {
   if(won) emit win();
 }
 
-void Field::win() {
+void Field::win()
+{
   WinDialog* windialog = new WinDialog;
   connect(windialog->findChild<QPushButton*>("playAgainBtn"), SIGNAL(clicked()),
           windialog,  SLOT(close()));
@@ -142,7 +148,8 @@ void Field::win() {
   windialog->show();
 }
 
-void Field::defeatGame() {
+void Field::defeatGame()
+{
   Defeat* defeat = new Defeat;
   connect(defeat->findChild<QPushButton*>("play_againBtn"), SIGNAL(clicked()),
           SIGNAL(needRestart()));
@@ -174,7 +181,8 @@ void Field::defeatGame() {
   defeat->show();
 }
 
-void Field::optionsDialog() {
+void Field::optionsDialog()
+{
   OptionsDialog* dialog = new OptionsDialog;
   connect(dialog, SIGNAL(settings_changed(int, int, int)), SLOT(changeSettings(int, int, int)));
   connect(dialog, SIGNAL(askMark_status_changed(bool)),  SLOT(askMarkAllow(bool)));
@@ -182,7 +190,8 @@ void Field::optionsDialog() {
   dialog->show();
 }
 
-void Field::getSettings() {
+void Field::getSettings()
+{
   rows                = settings->value("rows", 9)                  .toInt();
   cols                = settings->value("cols", 9)                  .toInt();
   mines               = settings->value("mines", 10)                .toInt();
@@ -196,7 +205,8 @@ void Field::getSettings() {
                                         QLocale::system().name())    .toString();
 }
 
-void Field::saveSettings() {
+void Field::saveSettings()
+{
   settings->setValue("rows",                      rows);
   settings->setValue("cols",                      cols);
   settings->setValue("mines",                     mines);
@@ -209,11 +219,13 @@ void Field::saveSettings() {
   settings->setValue("language",                  lng);
 }
 
-Field::~Field() {
+Field::~Field()
+{
   saveSettings();
 }
 
-void Field::changeSettings(int rows, int cols , int mines) {
+void Field::changeSettings(int rows, int cols , int mines)
+{
   this->rows = rows;
   this->cols = cols;
   this->mines = mines;
@@ -221,11 +233,13 @@ void Field::changeSettings(int rows, int cols , int mines) {
   emit needRestart();
 }
 
-void Field::askMarkAllow(bool allow) {
+void Field::askMarkAllow(bool allow)
+{
   settings->setValue("ask_mark", this->ask_mark = allow);
 }
 
-void Field::statistics_dialog() {
+void Field::statistics_dialog()
+{
   StatisticsWidget* stat_dialog = new StatisticsWidget;
   Ui::Statistics* ui = new Ui::Statistics;
   ui->setupUi(stat_dialog);
@@ -243,7 +257,8 @@ void Field::statistics_dialog() {
   stat_dialog->show();
 }
 
-void Field::clearStatistics() {
+void Field::clearStatistics()
+{
   settings->remove("gamesPlayed");
   settings->remove("gamesWon");
   settings->remove("bestTime");
@@ -251,7 +266,8 @@ void Field::clearStatistics() {
                        bestAdvancedTime = gamesPlayed = gamesWon = 0;
 }
 
-void Field::changeLanguage(QString new_lng) {
+void Field::changeLanguage(QString new_lng)
+{
   lng = new_lng;
   saveSettings();
   qApp->exit(2);

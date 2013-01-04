@@ -7,7 +7,8 @@
 #include <QRadioButton>
 #include <QComboBox>
 
-class OptionsDialog : public QDialog {
+class OptionsDialog : public QDialog
+{
   Q_OBJECT
 private:
   QSettings* settings;
