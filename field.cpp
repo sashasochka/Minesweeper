@@ -120,7 +120,7 @@ void Field::win()
           windialog,  SLOT(close()));
   connect(windialog, SIGNAL(finished(int)),
           SIGNAL(needRestart()));
-  int* bestTime;
+  int* bestTime = NULL;
 
   if     (rows == 9  && cols == 9  && mines == 10) bestTime = &bestBeginnerTime;
   else if(rows == 16 && cols == 16 && mines == 40) bestTime = &bestIntermediateTime;

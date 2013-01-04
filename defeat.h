@@ -1,8 +1,6 @@
 #ifndef DEFEAT_H
 #define DEFEAT_H
 
-#include <QDialog>
-#include <QDate>
 #include "statisticswidget.h"
 
 namespace Ui

@@ -1,9 +1,9 @@
 #ifndef FIELD_H
 #define FIELD_H
 
-#include <QWidget>
 #include <QGridLayout>
 #include <QtCore>
+#include <QWidget>
 #include "cell.h"
 #include "settings.h"
 
