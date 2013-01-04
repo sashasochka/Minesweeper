@@ -1,3 +1,5 @@
+minesweeper-debug/
+*.o
 *.autosave
 *.pro.*
 *.swp
