@@ -29,9 +29,9 @@ Field::Field(QWidget *parent) :
   for(int i = 0; i < cells.size(); i++) {
     for(int j = 0; j < cells[i].size(); j++) {
       if(!i || !j || i == cells.size() - 1 || j == cells[i].size() - 1) {
-        cells[i][j] = new Cell(i, j, false);
+        cells[i][j] = new Cell(i, j, false, this);
       } else {
-        cells[i][j] = new Cell(i, j);
+        cells[i][j] = new Cell(i, j, true, this);
         connect(cells[i][j], SIGNAL(zeroBombNeighbours(QPoint)),
                 SLOT(openNeighbours(QPoint))
                );
