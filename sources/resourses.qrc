@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file alias="cell_image.gif">cell_image.GIF</file>
-        <file>styles.qss</file>
-        <file>smile.jpg</file>
-    </qresource>
-</RCC>
