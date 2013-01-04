@@ -190,10 +190,12 @@ void Cell::changeStatus()
     setText("");
     break;
   case flagged:
-    setSpecialStyle("QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);", "red");
+    setSpecialStyle(
+          "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);", "red");
     break;
   case asked:
-    setSpecialStyle("QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);", "yellow");
+    setSpecialStyle(
+          "QLinearGradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #06f, stop: 1 #ccf);", "yellow");
     setText("?");
     break;
   }
