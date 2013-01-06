@@ -67,6 +67,10 @@ void MainWindow::on_actionAbout_Minesweeper_triggered()
 
 void MainWindow::restart()
 {
+  static bool restarting = false;
+  if (restarting)
+    return;
+  restarting = true;
   tmp_layout->removeWidget(field);
   delete field;
   setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
@@ -74,6 +78,7 @@ void MainWindow::restart()
   tmp_layout->addWidget(field);
   setFixedSize(prefSize());
   connect(field, SIGNAL(needRestart()), SLOT(restart()));
+  restarting = false;
 }
 
 void MainWindow::on_actionView_Help_triggered()
