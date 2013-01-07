@@ -47,7 +47,11 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     resourses.qrc
 
+TRANSLATIONS += \
+    minesweeper_uk.ts \
+    minesweeper_en.ts
+
 OTHER_FILES += \
-    styles.qss \
     minesweeper_uk.ts \
     minesweeper_en.ts \
+    styles.qss
