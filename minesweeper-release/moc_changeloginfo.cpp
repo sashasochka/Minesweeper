@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'changeloginfo.h'
 **
-** Created: Sat Jan 5 00:40:07 2013
+** Created: Mon Jan 7 12:17:34 2013
 **      by: The Qt Meta Object Compiler version 67 (Qt 5.0.0)
 **
 ** WARNING! All changes made in this file will be lost!
