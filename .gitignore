@@ -4,3 +4,7 @@ src/android/
 *.autosave
 *.pro.*
 *.swp
+moc_*
+Makefile
+ui_*.h
+
