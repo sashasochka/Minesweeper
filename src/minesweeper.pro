@@ -1,16 +1,9 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2013-01-04T15:17:54
-#
-#-------------------------------------------------
-
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = minesweeper
+TARGET = Minesweeper
 TEMPLATE = app
-
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -53,5 +46,4 @@ TRANSLATIONS += \
 
 OTHER_FILES += \
     minesweeper_uk.ts \
-    minesweeper_en.ts \
-    styles.qss
+    minesweeper_en.ts
