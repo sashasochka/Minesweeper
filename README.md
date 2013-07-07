@@ -1,8 +1,27 @@
-Minesweeper 
+The New Minesweeper
 ===========
 
-Classical Minesweeper game written on C++11/Qt5
+This game is a new variant of the original Minesweeper for Microsoft Windows. It's written with C++11 and Qt5 framework.
 
+The code structure is very horrible, sorry for that.  Maybe I will rewrite it somewhen... 
+
+
+Languages
 -----------
-Sorry for bad-quality code, the project mixes all-different technologies of Qt, written just to learn it.
-06 Jan 2013: ported to Qt5, fixed bugs, changed design,  but source code structure is still awful.
+
+The New Minesweeper supports multiple languages.
+Currently there are translations for:
+  - English
+  - Ukrainian
+
+Screenshots 
+-----------
+
+Small field:
+
+![Small](screenshots/small.png "Small")
+
+
+Options:
+
+![Options](screenshots/options.png "Options")
