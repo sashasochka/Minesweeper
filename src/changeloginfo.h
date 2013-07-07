@@ -3,21 +3,20 @@
 
 #include <QWidget>
 
-namespace Ui
-{
+#include <memory>
+
+namespace Ui {
 class ChangelogInfo;
 }
 
-class ChangelogInfo : public QWidget
-{
-  Q_OBJECT
+class ChangelogInfo final : public QWidget {
+    Q_OBJECT
 
 public:
-  explicit ChangelogInfo(QWidget *parent = 0);
-  ~ChangelogInfo();
-
+    explicit ChangelogInfo(QWidget *parent = 0);
+    ~ChangelogInfo();
 private:
-  Ui::ChangelogInfo *ui;
+    std::unique_ptr<Ui::ChangelogInfo> ui;
 };
 
 #endif // CHANGELOGINFO_H

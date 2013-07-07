@@ -3,27 +3,25 @@
 
 #include "statisticswidget.h"
 
+#include <memory>
 
-namespace Ui
-{
+namespace Ui {
 class WinDialog;
 }
 
-class WinDialog : public StatisticsWidget
-{
-  Q_OBJECT
+class WinDialog final : public StatisticsWidget {
+    Q_OBJECT
 
 public:
-  explicit WinDialog(QWidget *parent = 0);
-  void enableBestTimeCongratulations(bool enable = true);
-  ~WinDialog();
+    explicit WinDialog(QWidget *parent = 0);
+    void enableBestTimeCongratulations(bool enable = true);
+    ~WinDialog();
 
 private slots:
-  void on_pushButton_clicked();
-
+    void on_pushButton_clicked();
 
 private:
-  Ui::WinDialog *ui;
+    std::unique_ptr<Ui::WinDialog> ui;
 };
 
 #endif // WINDIALOG_H

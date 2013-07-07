@@ -3,21 +3,20 @@
 
 #include <QWidget>
 
-namespace Ui
-{
+#include <memory>
+
+namespace Ui {
 class About;
 }
 
-class About : public QWidget
-{
-  Q_OBJECT
+class About final : public QWidget {
+    Q_OBJECT
 
 public:
-  explicit About(QWidget *parent = 0);
-  ~About();
-
+    explicit About(QWidget *parent = 0);
+    ~About() noexcept;
 private:
-  Ui::About *ui;
+    std::unique_ptr<Ui::About> ui;
 };
 
 #endif // ABOUT_H

@@ -1,18 +1,13 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
-#include <QWidget>
 #include <QSettings>
 
-class Settings : public QSettings
-{
-  Q_OBJECT
-private:
+const int changeLanguageReturnCode = 2;
+
+class Settings final : public QSettings {
+    Q_OBJECT
 public:
-  explicit Settings(QWidget *parent = 0);
-
-signals:
-public slots:
-
+    explicit Settings(QWidget *parent = 0);
 };
 #endif // SETTINGS_H

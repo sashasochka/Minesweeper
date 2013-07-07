@@ -3,17 +3,11 @@
 
 #include <QValidator>
 
-class UIntValidator : public QValidator
-{
-  Q_OBJECT
+class UIntValidator final : public QValidator {
+    Q_OBJECT
 public:
-  explicit UIntValidator(QObject *parent = 0);
-  virtual State validate(QString &, int &) const;
-
-signals:
-
-public slots:
-
+    explicit UIntValidator(QObject *parent = 0);
+    State validate(QString &, int &) const;
 };
 
 #endif // UINTVALIDATOR_H

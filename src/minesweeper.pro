@@ -40,6 +40,9 @@ FORMS    += mainwindow.ui \
 RESOURCES += \
     resourses.qrc
 
+QMAKE_CXX = clang++
+QMAKE_CXXFLAGS += -std=c++11
+
 TRANSLATIONS += \
     minesweeper_uk.ts \
     minesweeper_en.ts

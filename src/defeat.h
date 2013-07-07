@@ -3,25 +3,24 @@
 
 #include "statisticswidget.h"
 
-namespace Ui
-{
+#include <memory>
+
+namespace Ui {
 class defeat;
 }
 
-class Defeat : public StatisticsWidget
-{
-  Q_OBJECT
+class Defeat final : public StatisticsWidget {
+    Q_OBJECT
 
 public:
-  explicit Defeat(QWidget *parent = 0);
-
-  ~Defeat();
+    explicit Defeat(QWidget *parent = 0);
+    ~Defeat();
 
 private slots:
-  void on_exitButton_clicked();
+    void on_exitButton_clicked();
 
 private:
-  Ui::defeat *ui;
+    std::unique_ptr<Ui::defeat> ui;
 };
 
 #endif // DEFEAT_H
