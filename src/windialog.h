@@ -3,7 +3,7 @@
 
 #include "statisticswidget.h"
 
-#include <memory>
+#include <QScopedPointer>
 
 namespace Ui {
 class WinDialog;
@@ -21,7 +21,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    std::unique_ptr<Ui::WinDialog> ui;
+    QScopedPointer<Ui::WinDialog> ui;
 };
 
 #endif // WINDIALOG_H

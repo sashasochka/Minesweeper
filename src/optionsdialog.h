@@ -4,16 +4,15 @@
 #include "settings.h"
 
 #include <QDialog>
+#include <QScopedPointer>
 
 class QLineEdit;
 class QRadioButton;
 
-#include <memory>
-
 class OptionsDialog : public QDialog {
     Q_OBJECT
 private:
-    std::unique_ptr<Settings> settings;
+    QScopedPointer<Settings> settings;
     int cur_rows;
     int cur_cols;
     int cur_mines;

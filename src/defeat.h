@@ -3,7 +3,7 @@
 
 #include "statisticswidget.h"
 
-#include <memory>
+#include <QScopedPointer>
 
 namespace Ui {
 class defeat;
@@ -20,7 +20,7 @@ private slots:
     void on_exitButton_clicked();
 
 private:
-    std::unique_ptr<Ui::defeat> ui;
+    QScopedPointer<Ui::defeat> ui;
 };
 
 #endif // DEFEAT_H

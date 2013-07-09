@@ -22,10 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
         );
         QPushButton* restartSmileButton = new QPushButton(QIcon(":/smile.jpg"), "");
         restartSmileButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        connect(field.get(), SIGNAL(needRestart()), SLOT(restart()));
+        connect(field.data(), SIGNAL(needRestart()), SLOT(restart()));
         connect(restartSmileButton, SIGNAL(clicked()),     SLOT(restart()));
         tmp_layout->addWidget(restartSmileButton);
-        tmp_layout->addWidget(field.get());
+        tmp_layout->addWidget(field.data());
         tmp_layout->setAlignment(restartSmileButton, Qt::AlignHCenter);
         ui->centralWidget->setLayout(tmp_layout);
         setFixedSize(prefSize());
@@ -63,12 +63,12 @@ void MainWindow::restart() {
     }
 
     restarting = true;
-    tmp_layout->removeWidget(field.get());
+    tmp_layout->removeWidget(field.data());
     setMaximumSize(QWIDGETSIZE_MAX, QWIDGETSIZE_MAX);
     field.reset(new Field(this));
-    tmp_layout->addWidget(field.get());
+    tmp_layout->addWidget(field.data());
     setFixedSize(prefSize());
-    connect(field.get(), SIGNAL(needRestart()), SLOT(restart()));
+    connect(field.data(), SIGNAL(needRestart()), SLOT(restart()));
     restarting = false;
 }
 

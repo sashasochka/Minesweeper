@@ -2,11 +2,9 @@
 #define FIELD_H
 
 #include <QGridLayout>
-#include <QtCore>
+#include <QScopedPointer>
 #include <QWidget>
-
-#include <memory>
-#include <vector>
+#include <QtCore>
 
 class QGridLayout;
 class Cell;
@@ -15,11 +13,11 @@ class Settings;
 class Field final : public QWidget {
     Q_OBJECT
 private:
-    std::unique_ptr<QGridLayout> f_layout;
+    QScopedPointer<QGridLayout> f_layout;
     int mines;
-    std::vector<std::vector<Cell*>> cells;
+    QVector<QVector<Cell*>> cells;
     void getSettings();
-    std::unique_ptr<Settings> settings;
+    QScopedPointer<Settings> settings;
     bool cells_are_filled;
 public:
     int rows;

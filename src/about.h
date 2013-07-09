@@ -1,9 +1,8 @@
 #ifndef ABOUT_H
 #define ABOUT_H
 
+#include <QScopedPointer>
 #include <QWidget>
-
-#include <memory>
 
 namespace Ui {
 class About;
@@ -16,7 +15,7 @@ public:
     explicit About(QWidget *parent = 0);
     ~About() noexcept;
 private:
-    std::unique_ptr<Ui::About> ui;
+    QScopedPointer<Ui::About> ui;
 };
 
 #endif // ABOUT_H

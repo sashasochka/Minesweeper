@@ -4,6 +4,7 @@
 #include "field.h"
 
 #include <QMainWindow>
+#include <QScopedPointer>
 
 class QVBoxLayout;
 
@@ -15,7 +16,7 @@ class MainWindow final : public QMainWindow {
     Q_OBJECT
 
 private:
-    std::unique_ptr<Field> field;
+    QScopedPointer<Field> field;
     QSize prefSize();
 
 public:
@@ -34,7 +35,7 @@ private slots:
     void on_actionStastics_triggered();
 
 private:
-    std::unique_ptr<Ui::MainWindow> ui;
+    QScopedPointer<Ui::MainWindow> ui;
     QVBoxLayout* tmp_layout;
 };
 

@@ -24,10 +24,10 @@ Field::Field(QWidget *parent) :
     parentWidget()->setMinimumSize(a * cols / 1.4, a * rows / 1.4);
     f_layout->setMargin(0);
     f_layout->setSpacing(0);
-    cells.assign(rows + 2, std::vector<Cell*>(cols + 2));
+    cells = QVector<QVector<Cell*>>(rows + 2, QVector<Cell*>(cols + 2));
 
-    for(size_t row = 0; row < cells.size(); row++) {
-        for(size_t col = 0; col < cells[row].size(); col++) {
+    for(int row = 0; row < cells.size(); row++) {
+        for(int col = 0; col < cells[row].size(); col++) {
             if(!row || !col || row == cells.size() - 1 || col == cells[row].size() - 1) {
                 cells[row][col] = new Cell(row, col, false, this);
             } else {
@@ -52,7 +52,7 @@ Field::Field(QWidget *parent) :
     }
 
     qsrand(QTime::currentTime().msec());
-    setLayout(f_layout.get());
+    setLayout(f_layout.data());
 }
 
 

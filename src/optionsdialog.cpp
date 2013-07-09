@@ -171,7 +171,7 @@ void OptionsDialog::ok() {
             data_correct = true;
         }
         if (!data_correct) {
-            std::unique_ptr<QMessageBox> mb{new QMessageBox{
+            QScopedPointer<QMessageBox> mb{new QMessageBox{
                     QMessageBox::Warning, errorTitle, errorText
                 }};
             mb->exec();
