@@ -4,8 +4,9 @@
 #include "settings.h"
 
 #include <QDialog>
-#include <QLineEdit>
-#include <QRadioButton>
+
+class QLineEdit;
+class QRadioButton;
 
 #include <memory>
 

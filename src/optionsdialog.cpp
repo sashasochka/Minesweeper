@@ -1,17 +1,20 @@
 #include "optionsdialog.h"
 
+#include "settings.h"
+#include "uintvalidator.h"
+
 #include <QApplication>
 #include <QCheckBox>
 #include <QDesktopWidget>
 #include <QGridLayout>
 #include <QGroupBox>
 #include <QLabel>
+#include <QLineEdit>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QRadioButton>
 #include <QSettings>
 
-#include "settings.h"
-#include "uintvalidator.h"
 #include <QComboBox>
 
 OptionsDialog::OptionsDialog(QWidget *parent) :

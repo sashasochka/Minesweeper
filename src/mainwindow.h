@@ -4,7 +4,8 @@
 #include "field.h"
 
 #include <QMainWindow>
-#include <QVBoxLayout>
+
+class QVBoxLayout;
 
 namespace Ui {
 class MainWindow;
