@@ -25,3 +25,7 @@ Small field:
 Options:
 
 ![Options](screenshots/options.png "Options")
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sochka/minesweeper/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
